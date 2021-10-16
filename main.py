@@ -60,10 +60,9 @@ tim.pensize(10)
 #     tim.pencolor(tup)
 #     # tim.pencolor("red")
 #     draw_shape(shape[keys])
-count = 0
-while(count < 100):
+
+for _ in range(200):
     draw_random_walk()
-    count += 1
 
 
 print(tim.speed())
