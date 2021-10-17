@@ -4,12 +4,13 @@ import heroes
 
 tim = Turtle()
 
-tim.shape("turtle")
+tim.shape("arrow")
 
 screen = Screen()
 screen.colormode(255)
 
 direction = [0, 90, 180, 270]
+
 
 # count = 0
 # while count < 4:
@@ -21,18 +22,29 @@ direction = [0, 90, 180, 270]
 # for _ in range(4):
 #     tim.forward(100)
 #     tim.right(90)
+def random_color():
+    return (randint(0, 255), randint(0, 255), randint(0, 255))
+
 
 def draw_shape(num):
-    angle = 360/num
+    angle = 360 / num
     for _ in range(num):
         tim.forward(100)
         tim.right(angle)
 
+
 def draw_random_walk():
-    tup = (randint(0, 255), randint(0, 255), randint(0, 255))
+    tup = random_color()
     tim.pencolor(tup)
     tim.forward(25)
     tim.setheading(choice(direction))
+
+def draw_spiral_graph(num):
+    for _ in range(int(360 / num)):
+        tim.circle(100)
+        tim.pencolor(random_color())
+        tim.setheading(tim.heading() + num)
+
 
 shape = {
     "triangle": 3,
@@ -53,16 +65,18 @@ shape = {
 #     else:
 #         tim.penup()
 #         tim.forward(5)
-tim.speed(10)
-tim.pensize(10)
+tim.speed(0)
+tim.pensize(1)
 # for keys in shape:
 #     tup = (randint(0, 255), randint(0, 255), randint(0, 255))
 #     tim.pencolor(tup)
 #     # tim.pencolor("red")
 #     draw_shape(shape[keys])
 
-for _ in range(200):
-    draw_random_walk()
+# for _ in range(200):
+#     draw_random_walk()
+
+draw_spiral_graph(1)
 
 
 print(tim.speed())
